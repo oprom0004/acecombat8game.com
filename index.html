@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ace Combat 8: Wings of Theve - 3D Jet Dogfight Game & Gear Hub</title>
+  <meta name="description" content="Ace Combat 8: Wings of Theve portal. Play free 3D jet dogfight simulator, discover the best HOTAS flight sticks, PC system requirements, and tactical guides.">
+  <meta name="keywords" content="ace combat 8, ace combat 8 game, ace combat 8 wings of theve, play ace combat 8 online, ace combat 8 flight stick, ace combat 8 pc requirements">
+
+  <link rel="canonical" href="https://acecombat8game.com/">
+  <link rel="alternate" hreflang="en" href="https://acecombat8game.com/">
+  <link rel="alternate" hreflang="ja" href="https://acecombat8game.com/ja/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ace Combat 8: Wings of Theve - 3D Jet Dogfight Game & Gear Hub">
+  <meta property="og:description" content="Play the free 3D jet dogfight combat arcade, compare HOTAS flight controllers, and master Ace Combat 8.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://acecombat8game.com/">
+  <meta property="og:image" content="https://acecombat8game.com/images/hero.jpg">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✈️</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "Ace Combat 8 Game Hub",
+        "url": "https://acecombat8game.com/",
+        "description": "Interactive aviation portal and 3D flight simulator arcade for Ace Combat 8: Wings of Theve."
+      },
+      {
+        "@type": "VideoGame",
+        "name": "Ace Combat 8: Wings of Theve",
+        "operatingSystem": "Windows, PS5, Xbox Series X",
+        "applicationCategory": "Game",
+        "genre": ["Flight Simulation", "Combat Flight", "Arcade Action"]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="site-header">
+    <div class="header-content">
+      <a href="/" class="brand-logo">
+        <span class="brand-icon">⚡</span>
+        <div>
+          <span class="brand-title">ACE COMBAT 8</span>
+          <span class="brand-sub">TACTICAL AVIATION & GEAR HUB</span>
+        </div>
+      </a>
+
+      <nav class="top-nav" id="siteNav">
+        <a href="/" class="nav-link active">Home</a>
+        <a href="/play-online/" class="nav-link">🕹️ 3D Dogfight Game</a>
+        <a href="/hardware/" class="nav-link">🎮 Best HOTAS Sticks</a>
+        <a href="/system-requirements/" class="nav-link">⚙️ PC Specs</a>
+        <a href="https://acecombat8.org/" target="_blank" rel="noopener" class="nav-link" style="color: var(--hud-cyan); border-color: rgba(0,242,254,0.3);">📚 Aircraft Wiki ↗</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="lang-switch">
+          <a href="/" class="lang-btn active">EN</a>
+          <a href="/ja/" class="lang-btn">日本語</a>
+        </div>
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-content">
+    <!-- Cinematic Hero Banner -->
+    <section class="hero-banner">
+      <div class="hero-img-wrap">
+        <img src="/images/hero.jpg" alt="Ace Combat 8 Wings of Theve Fighter Jets Dogfight" width="1240" height="520">
+        <div class="hero-overlay">
+          <span class="hero-badge">🚀 UNREAL ENGINE 5 FLIGHT ACTION</span>
+          <h1 class="hero-title">ACE COMBAT 8: WINGS OF THEVE</h1>
+          <p class="hero-desc">
+            Experience next-generation photorealistic aerial combat, photogrammetric volumetric skies, and hypersonic stealth dogfights. Play the free 3D flight combat arcade below and equip your cockpit with elite HOTAS gear.
+          </p>
+          <div class="hero-cta-bar">
+            <a href="/play-online/" class="btn-primary">
+              <span>🕹️</span> Launch 3D Dogfight Arcade →
+            </a>
+            <a href="/hardware/" class="btn-secondary">
+              <span>🎮</span> View Flight Stick Guide
+            </a>
+            <a href="https://acecombat8.org/" target="_blank" rel="noopener" class="btn-secondary" style="border-color: var(--hud-cyan);">
+              <span>📚</span> Full Aircraft Wiki ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Embedded 3D Dogfight Combat Simulator Section -->
+    <section style="margin-bottom: 3.5rem;">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title"><span>🎯</span> Live 3D Jet Dogfight Simulator</h2>
+          <p class="section-sub">Take the yoke of an F-22 Raptor. Lock heat-seeking missiles, fire 20mm Vulcan cannons, and splash hostile bogeys.</p>
+        </div>
+        <a href="/play-online/" class="btn-secondary" style="font-size: 0.85rem;">
+          <span>⛶ Fullscreen Tactical Mode →</span>
+        </a>
+      </div>
+
+      <div class="dogfight-game-wrapper">
+        <canvas id="dogfightCanvas"></canvas>
+
+        <!-- Tactical HUD Overlay -->
+        <div class="game-hud-overlay">
+          <div class="hud-top-bar">
+            <div class="hud-radar-box">
+              <span>RADAR: ACTIVE</span><br>
+              <span>AIRSPEED: <strong id="hudSpeed">680</strong> KTS</span>
+            </div>
+            <div class="hud-score-box">
+              <span>SCORE: <strong id="hudScore">0</strong></span><br>
+              <span>KILLS: <strong id="hudKills">0</strong> | MSL: <strong id="hudMissiles">48</strong></span>
+            </div>
+          </div>
+
+          <div class="hud-center-crosshair">
+            <div class="crosshair-center-dot"></div>
+          </div>
+
+          <div id="lockWarning" class="hud-lock-warning" style="display: none;">
+            ⚠️ MISSILE LOCK ⚠️
+          </div>
+
+          <!-- Mobile Virtual Joystick & Buttons -->
+          <div class="mobile-flight-controls">
+            <div class="touch-stick-area" id="touchStick">
+              <div class="touch-stick-thumb" id="stickThumb"></div>
+            </div>
+            <div class="touch-action-buttons">
+              <button class="btn-flight-touch btn-missile" id="btnFireMissile" type="button">MSL</button>
+              <button class="btn-flight-touch btn-gun" id="btnFireGun" type="button">GUN</button>
+              <button class="btn-flight-touch btn-afterburner" id="btnBoost" type="button">AB</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; background: #0c121d; padding: 0.75rem 1.25rem; border-radius: 8px; border: 1px solid var(--border-color); font-size: 0.85rem; color: var(--text-muted);">
+        <div><strong>Controls:</strong> Mouse / Arrow Keys (Pitch & Roll) • Space / Left Click (20mm Gun) • F / Right Click (Missile) • Shift (Afterburner)</div>
+        <div style="color: var(--hud-green); font-weight: 700;">● ZERO INSTALLATION • RUNS IN BROWSER</div>
+      </div>
+    </section>
+
+    <!-- Cross-Network Synergy Banner -->
+    <div class="synergy-box">
+      <div class="synergy-text">
+        <h4>Looking for Complete Aircraft Stats & S-Rank Walkthroughs?</h4>
+        <p>Visit our sister database <strong>AceCombat8.org</strong> for full technology trees, QAAM/EML damage matrices, and mission Ace spawn locations.</p>
+      </div>
+      <a href="https://acecombat8.org/" target="_blank" rel="noopener" class="btn-primary" style="white-space: nowrap;">
+        <span>📚 Explore AceCombat8.org Wiki →</span>
+      </a>
+    </div>
+
+    <!-- 3 Core Feature Cards -->
+    <section>
+      <div class="section-header">
+        <div>
+          <h2 class="section-title"><span>⚡</span> Tactical Guides & Cockpit Intel</h2>
+          <p class="section-sub">Master the skies with our curated hardware reviews, system optimizations, and multiplayer combat strategies.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="tactical-card">
+          <span class="card-tag">COCKPIT ACCESSORIES</span>
+          <h3>Top HOTAS Flight Sticks for Ace Combat 8</h3>
+          <p>From the budget-friendly Thrustmaster T.16000M to the dual-throttle Logitech X56 and Turtle Beach VelocityOne, discover which controller delivers pinpoint accuracy.</p>
+          <a href="/hardware/" class="btn-secondary" style="width: 100%; justify-content: center;">
+            <span>Read Hardware Guide →</span>
+          </a>
+        </div>
+
+        <div class="tactical-card">
+          <span class="card-tag">HARDWARE BENCHMARK</span>
+          <h3>PC System Requirements & FPS Optimization</h3>
+          <p>Unreal Engine 5 Nanite geometry and Lumen dynamic lighting demand serious GPU muscle. Check minimum, recommended, and 4K 144Hz setup recommendations.</p>
+          <a href="/system-requirements/" class="btn-secondary" style="width: 100%; justify-content: center;">
+            <span>Check PC Specs →</span>
+          </a>
+        </div>
+
+        <div class="tactical-card">
+          <span class="card-tag">AIRCRAFT DATABASE</span>
+          <h3>Full Aircraft Tree & Special Weapons</h3>
+          <p>Explore detailed breakdown of 5th-gen stealth fighters, delta-wing interceptors, and high-energy electromagnetic railguns (EML) on AceCombat8.org.</p>
+          <a href="https://acecombat8.org/" target="_blank" rel="noopener" class="btn-secondary" style="width: 100%; justify-content: center; border-color: var(--hud-cyan);">
+            <span>Visit Aircraft Wiki ↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="disclaimer-text">
+        <strong>DISCLAIMER:</strong> AceCombat8Game.com is an independent community portal and companion resource. ACE COMBAT is a registered trademark of Bandai Namco Entertainment Inc. Not affiliated with or endorsed by Bandai Namco or Project Aces.
+      </p>
+      <p class="copyright-sub">AceCombat8Game.com • Tactical Aviation Network • In Collaboration with <a href="https://acecombat8.org/" target="_blank" rel="noopener" style="color: var(--hud-cyan); text-decoration: none;">AceCombat8.org</a></p>
+    </div>
+  </footer>
+
+  <script src="/dogfight.js"></script>
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const siteNav = document.getElementById('siteNav');
+    if (menuToggle && siteNav) {
+      menuToggle.addEventListener('click', () => {
+        siteNav.classList.toggle('open');
+      });
+    }
+  </script>
+</body>
+</html>

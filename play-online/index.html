@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Play Ace Combat 8 3D Dogfight Online Free - Jet Air Combat Arcade</title>
+  <meta name="description" content="Play Ace Combat 8 3D Jet Dogfight free in your web browser. Pilot modern stealth fighters, lock heat-seeking missiles, and splash enemy bogeys. No download required.">
+  <meta name="keywords" content="play ace combat 8 online, ace combat 8 free game, 3d jet dogfight browser, ace combat unblocked, jet fighter web game">
+
+  <link rel="canonical" href="https://acecombat8game.com/play-online/">
+  <link rel="alternate" hreflang="en" href="https://acecombat8game.com/play-online/">
+  <link rel="alternate" hreflang="ja" href="https://acecombat8game.com/ja/play-online/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Play Ace Combat 8 3D Dogfight Online Free">
+  <meta property="og:description" content="Engage in hypersonic 3D aerial dogfights directly in your browser. Pilot an F-22 Raptor with Vulcan cannons and Sidewinder missiles.">
+  <meta property="og:type" content="game">
+  <meta property="og:url" content="https://acecombat8game.com/play-online/">
+  <meta property="og:image" content="https://acecombat8game.com/images/hero.jpg">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✈️</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="site-header">
+    <div class="header-content">
+      <a href="/" class="brand-logo">
+        <span class="brand-icon">⚡</span>
+        <div>
+          <span class="brand-title">ACE COMBAT 8</span>
+          <span class="brand-sub">TACTICAL AVIATION & GEAR HUB</span>
+        </div>
+      </a>
+
+      <nav class="top-nav" id="siteNav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/play-online/" class="nav-link active">🕹️ 3D Dogfight Game</a>
+        <a href="/hardware/" class="nav-link">🎮 Best HOTAS Sticks</a>
+        <a href="/system-requirements/" class="nav-link">⚙️ PC Specs</a>
+        <a href="https://acecombat8.org/" target="_blank" rel="noopener" class="nav-link" style="color: var(--hud-cyan);">📚 Aircraft Wiki ↗</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="lang-switch">
+          <a href="/play-online/" class="lang-btn active">EN</a>
+          <a href="/ja/play-online/" class="lang-btn">日本語</a>
+        </div>
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-content">
+    <!-- Breadcrumbs -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+      <div style="font-size: 0.82rem; color: var(--text-dim);">
+        <a href="/" style="color: var(--text-muted); text-decoration: none;">Home</a> / <span style="color: var(--hud-cyan);">3D Dogfight Arcade</span>
+      </div>
+      <span class="hero-badge" style="margin: 0; padding: 0.2rem 0.6rem; font-size: 0.68rem;">UNBLOCKED BROWSER PLAY</span>
+    </div>
+
+    <h1 style="font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 900; color: #fff; margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.5rem;">
+      🎮 Ace Combat 8: 3D Tactical Dogfight Simulator
+    </h1>
+
+    <!-- 3D Arcade Container -->
+    <div id="gameWrapper" class="dogfight-game-wrapper" style="height: clamp(540px, 78vh, 750px);">
+      <canvas id="dogfightCanvas"></canvas>
+
+      <!-- Tactical HUD Overlay -->
+      <div class="game-hud-overlay">
+        <div class="hud-top-bar">
+          <div class="hud-radar-box">
+            <span>RADAR: ACTIVE (BOGEYS DETECTED)</span><br>
+            <span>AIRSPEED: <strong id="hudSpeed">680</strong> KNOTS</span>
+          </div>
+          <div class="hud-score-box">
+            <span>TACTICAL SCORE: <strong id="hudScore">0</strong></span><br>
+            <span>SPLASHED: <strong id="hudKills">0</strong> | MSL REMAINING: <strong id="hudMissiles">48</strong></span>
+          </div>
+        </div>
+
+        <div class="hud-center-crosshair">
+          <div class="crosshair-center-dot"></div>
+        </div>
+
+        <div id="lockWarning" class="hud-lock-warning" style="display: none;">
+          ⚠️ MISSILE LOCK ⚠️
+        </div>
+
+        <!-- Mobile Virtual Controls -->
+        <div class="mobile-flight-controls">
+          <div class="touch-stick-area" id="touchStick">
+            <div class="touch-stick-thumb" id="stickThumb"></div>
+          </div>
+          <div class="touch-action-buttons">
+            <button class="btn-flight-touch btn-missile" id="btnFireMissile" type="button">MSL</button>
+            <button class="btn-flight-touch btn-gun" id="btnFireGun" type="button">GUN</button>
+            <button class="btn-flight-touch btn-afterburner" id="btnBoost" type="button">AB</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arcade Action Toolbar -->
+    <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 0.65rem 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;">
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <button id="fullscreenBtn" class="btn-secondary" type="button" style="background: rgba(0,242,254,0.15); border-color: var(--hud-cyan); color: #fff;">
+          <span>⛶</span> Fullscreen Cockpit
+        </button>
+        <button id="restartBtn" class="btn-secondary" type="button">
+          <span>🔄</span> Respawn Jet
+        </button>
+      </div>
+
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <a href="https://acecombat8.org/" target="_blank" rel="noopener" class="btn-secondary" style="border-color: var(--hud-cyan); color: var(--hud-cyan); text-decoration: none;">
+          <span>📚</span> Aircraft Stats Wiki ↗
+        </a>
+        <button id="shareBtn" class="btn-secondary" type="button">
+          <span>🚀</span> Challenge Wingman
+        </button>
+      </div>
+    </div>
+
+    <!-- Flight Tactics & Controls Manual -->
+    <section class="tactical-card" style="margin-bottom: 2.5rem;">
+      <h3 style="color: #fff; font-size: 1.3rem; margin-bottom: 0.5rem;">Combat Flight Tactics & Flight Controls</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">
+        Master the art of energy fighting and high-G turns in Ace Combat 8:
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 1rem;">
+        <div style="background: #050912; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+          <h4 style="color: var(--hud-cyan); margin-bottom: 0.25rem;">1. Lead Pursuit & Cannon Aim</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Lead your crosshairs slightly ahead of the enemy jet's vector to ensure your 20mm Vulcan shells connect.</p>
+        </div>
+        <div style="background: #050912; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+          <h4 style="color: var(--missile-red); margin-bottom: 0.25rem;">2. Heat-Seeking Missile Lock</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Keep hostile bogeys inside the central crosshair circle until the HUD flashes <strong>MISSILE LOCK</strong> before firing.</p>
+        </div>
+        <div style="background: #050912; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+          <h4 style="color: var(--afterburner-amber); margin-bottom: 0.25rem;">3. Afterburner Energy Fighting</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Engage afterburners (Shift / AB) to close distance rapidly, or cut throttle into tight High-G scissor maneuvers.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Share / Challenge Modal -->
+  <div id="shareModal" class="share-modal-overlay" style="position: fixed; inset: 0; background: rgba(3,5,10,0.85); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; z-index: 9999; padding: 1rem;">
+    <div style="background: #0c121d; border: 1px solid var(--hud-cyan); border-radius: 14px; max-width: 440px; width: 100%; padding: 1.5rem; box-shadow: 0 20px 50px rgba(0,0,0,0.9);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h3 style="color: #fff; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;"><span>🚀</span> Challenge a Wingman</h3>
+        <button id="closeShareModal" style="background: transparent; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;">×</button>
+      </div>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+        Share your dogfight sortie link and challenge your friends to beat your high score!
+      </p>
+      <div style="display: flex; gap: 0.5rem; margin-bottom: 1.25rem;">
+        <input id="shareLinkInput" type="text" readonly value="https://acecombat8game.com/play-online/" style="flex: 1; background: #05080e; border: 1px solid var(--border-color); color: var(--hud-cyan); padding: 0.6rem 0.8rem; border-radius: 6px; font-family: monospace; font-size: 0.82rem;">
+        <button id="copyShareBtn" class="btn-primary" style="padding: 0.6rem 1rem; white-space: nowrap;">Copy</button>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;">
+        <a id="shareX" href="#" target="_blank" rel="noopener" class="btn-secondary" style="justify-content: center; font-size: 0.8rem;">𝕏 Twitter</a>
+        <a id="shareWA" href="#" target="_blank" rel="noopener" class="btn-secondary" style="justify-content: center; font-size: 0.8rem;">WhatsApp</a>
+        <a id="shareTG" href="#" target="_blank" rel="noopener" class="btn-secondary" style="justify-content: center; font-size: 0.8rem;">Telegram</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="disclaimer-text">
+        <strong>DISCLAIMER:</strong> AceCombat8Game.com is an independent fan community portal. ACE COMBAT is a trademark of Bandai Namco Entertainment Inc.
+      </p>
+      <p class="copyright-sub">AceCombat8Game.com • Tactical Aviation Network • In Collaboration with <a href="https://acecombat8.org/" target="_blank" rel="noopener" style="color: var(--hud-cyan); text-decoration: none;">AceCombat8.org</a></p>
+    </div>
+  </footer>
+
+  <script src="/dogfight.js"></script>
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const siteNav = document.getElementById('siteNav');
+    if (menuToggle && siteNav) {
+      menuToggle.addEventListener('click', () => {
+        siteNav.classList.toggle('open');
+      });
+    }
+
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const gameWrapper = document.getElementById('gameWrapper');
+    if (fullscreenBtn && gameWrapper) {
+      fullscreenBtn.addEventListener('click', () => {
+        if (gameWrapper.requestFullscreen) {
+          gameWrapper.requestFullscreen();
+        } else if (gameWrapper.webkitRequestFullscreen) {
+          gameWrapper.webkitRequestFullscreen();
+        }
+      });
+    }
+
+    const restartBtn = document.getElementById('restartBtn');
+    if (restartBtn) {
+      restartBtn.addEventListener('click', () => {
+        window.location.reload();
+      });
+    }
+
+    // Share Modal
+    const shareBtn = document.getElementById('shareBtn');
+    const shareModal = document.getElementById('shareModal');
+    const closeShareModal = document.getElementById('closeShareModal');
+    const copyShareBtn = document.getElementById('copyShareBtn');
+    const shareLinkInput = document.getElementById('shareLinkInput');
+
+    const shareUrl = window.location.href;
+    const shareText = "I just scored in Ace Combat 8 3D Jet Dogfight! Can you beat my high score? ✈️🔥";
+
+    const shareX = document.getElementById('shareX');
+    const shareWA = document.getElementById('shareWA');
+    const shareTG = document.getElementById('shareTG');
+
+    if (shareX) shareX.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+    if (shareWA) shareWA.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`;
+    if (shareTG) shareTG.href = `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`;
+
+    if (shareBtn) {
+      shareBtn.addEventListener('click', async () => {
+        if (navigator.share && /mobile|android|iphone/i.test(navigator.userAgent)) {
+          try {
+            await navigator.share({ title: 'Ace Combat 8 3D Dogfight', text: shareText, url: shareUrl });
+            return;
+          } catch (e) {}
+        }
+        if (shareModal) shareModal.style.display = 'flex';
+      });
+    }
+
+    if (closeShareModal && shareModal) {
+      closeShareModal.addEventListener('click', () => { shareModal.style.display = 'none'; });
+      shareModal.addEventListener('click', (e) => { if (e.target === shareModal) shareModal.style.display = 'none'; });
+    }
+
+    if (copyShareBtn && shareLinkInput) {
+      copyShareBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(shareLinkInput.value).then(() => {
+          copyShareBtn.textContent = 'Copied! 🎉';
+          setTimeout(() => { copyShareBtn.textContent = 'Copy'; }, 2000);
+        });
+      });
+    }
+  </script>
+</body>
+</html>
